@@ -39,6 +39,18 @@ The repertory cliques contains all cliques for each graph, computed with igraph,
 	- DSJC500.9
 
 
+The repertory reduction contains for each graph all vertices that can be delete from the graph because they have no impact on the problem (low weight/degree).
+
 To add theses instances to your project :
 
 	git submodule add https://github.com/Cyril-Grl/gc_wvcp_instances.git instances
+
+To update :
+
+	cd instances/
+	git pull origin main
+	cd ..
+	git add instances/
+	git commit -m "submodule instance updated"
+	git push
+	
