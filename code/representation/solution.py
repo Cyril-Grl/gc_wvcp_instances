@@ -29,7 +29,10 @@ class Solution:
         ], key=lambda v: (self.graph.weights[v], self.graph.degree[v]))
         print("second reduction")
         reduc_n2 = []
+        reduc_v2 = []
         for vertex in self.list_free_vertices:
+            if vertex in reduc_v2:
+                continue
             neighbors = [
                 self.graph.neighborhood[n]
                 for n in self.graph.neighborhood[vertex]
@@ -46,6 +49,7 @@ class Solution:
                             and vertex < v
                         ):
                             reduc_n2.append(f"{vertex} {v}")
+                            reduc_v2.append(v)
                             self.reduced_vertices.append(vertex)
                             break
         print(f"{len(reduc_n2)} vertices deleted")
