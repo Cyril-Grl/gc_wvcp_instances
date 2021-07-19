@@ -24,9 +24,9 @@ class Solution:
         """
         self.compute_reduction()
         print(f"{len(self.reduced_vertices)} vertices deleted")
-        self.list_free_vertices = [
+        self.list_free_vertices = sorted([
             v for v in range(self.graph.nb_vertices) if v not in self.reduced_vertices
-        ]
+        ], key=lambda v: (self.graph.weights[v], self.graph.degree[v]))
         print("second reduction")
         reduc_n2 = []
         for vertex in self.list_free_vertices:
@@ -46,6 +46,7 @@ class Solution:
                             and vertex < v
                         ):
                             reduc_n2.append(f"{vertex} {v}")
+                            self.reduced_vertices.append(vertex)
                             break
         print(f"{len(reduc_n2)} vertices deleted")
         with open(f"reduction_n2/{self.graph.name}.txt", "w") as f:
